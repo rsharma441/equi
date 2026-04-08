@@ -24,16 +24,9 @@ app = FastAPI(
     description="Upload fund CSVs, define a mandate, get an IC memo with a verifiable audit trail.",
 )
 
-import os
-
-_origins = os.environ.get(
-    "ALLOWED_ORIGINS",
-    "http://localhost:3000,http://localhost:3001",
-).split(",")
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=_origins,
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
